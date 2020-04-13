@@ -1,0 +1,47 @@
+# Constant config version: "1.20.D10.1.2.10 ($Rev: 15 $)"
+
+# Server SSH Access
+TECNOFIN_ACCESS_B2C:
+  HOST: tecnofin6.peopleshostvps.com
+  # HOST: 66.103.159.122
+  PORT: 21
+  USERNAME: ofixmotor
+  PASSWORD: ofm2014.$
+  TIME_OUT: 80
+
+TECNOFIN_ACCESS_B2B:
+  HOST: tecnofin6.peopleshostvps.com
+  # HOST: 66.103.159.122
+  PORT: 21
+  USERNAME: cluboficinasmotor
+  PASSWORD: com152014
+  TIME_OUT: 80
+
+WEBAPPS_ACCESS:
+  HOST: 192.168.100.93
+  PORT: 22
+  USERNAME: root
+  PASSWORD: Arcserve01
+
+BUCKET_AWS_S3:
+  S3_NAME: 'pedidoswebtecnofin'
+  ACCESS_KEY: 'AKIAWBPO32KL2CUR4DVT'
+  SECRET_KEY: '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'
+
+PARSER_PARAMETERS:
+  APPLY_SENT_INTEGRATION: True # Maybe do not use this parameter
+
+LOG_RESOURCE:
+  FILE_EXTENSION: '.log'
+  WS_FILE_LOG_NAME: 'uploader_ws_'
+  DB_FILE_LOG_NAME: 'uploader_db_'
+  APP_FILE_LOG_NAME: 'app_uploader_'
+  DIRECTORY_LOG_FILES: '../TVOrderS3Uploader/logs/'
+
+PATH_ORDERS_B2C: '/Pedidos' # Webapps01 '/ofix/tecnofin/pedidos/'
+PATH_ORDERS_B2C_BACK: '/Pedidos/BackupPedidos'# Webapps01'/ofix/tecnofin/pedidosBk/'
+PATH_LOCAL: '../TVOrderS3Uploader'
+EXT_ORDERS_TV: '*.xml'
+
+PATH_ORDERS_B2B: '/Pedidos' # Webapps01 '/ofix/tecnofin/pedidosb2b/'
+# PATH_ORDERS_B2B_BACK: '/ofix/tecnofin/pedidosb2bBk/'
