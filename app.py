@@ -17,6 +17,7 @@ import boto3
 from ftplib import FTP_TLS
 import argparse
 from logger_controller.logger_control import *
+import time
 
 logger = configure_logger()
 
@@ -81,6 +82,8 @@ def parse_xml_pedidos_b2c_tv(order_type):
 
     cfg = get_config_constant_file()
 
+    orders_status_list = cfg['ORDERS_STATUS_LIST']
+
     # remote_backup_path = '/ofix/tecnofin/pedidosBk/'
 
     if 'B2C' in order_type:
@@ -106,7 +109,9 @@ def parse_xml_pedidos_b2c_tv(order_type):
 
         for pedido in pedidos:
             # print all entries that are files
+
             if fnmatch.fnmatch(pedido, pattern):
+
                 file_remote = remote_path + '/' + pedido
                 file_local = local_temp_path + '/' + pedido
 
@@ -139,6 +144,8 @@ def parse_xml_pedidos_b2c_tv(order_type):
                     logger.info('Pedido File: %s', '{0} already exists in Bucket S3!'.format(pedido))
 
                 ftps.delete(pedido)
+
+            time.sleep(1)
 
         ftps.close()
 
