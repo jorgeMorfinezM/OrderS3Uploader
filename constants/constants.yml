@@ -5,29 +5,29 @@ TECNOFIN_ACCESS_B2C:
   HOST: tecnofin6.peopleshostvps.com
   # HOST: 66.103.159.122
   PORT: 21
-  USERNAME: ofixmotor
-  PASSWORD: ofm2014.$
+  USERNAME: xxxxxx
+  PASSWORD: xxxxxx
   TIME_OUT: 80
 
 TECNOFIN_ACCESS_B2B:
   HOST: tecnofin6.peopleshostvps.com
   # HOST: 66.103.159.122
   PORT: 21
-  USERNAME: cluboficinasmotor
-  PASSWORD: com152014
+  USERNAME: xxxxx
+  PASSWORD: xxxxx
   TIME_OUT: 80
 
 WEBAPPS_ACCESS:
   HOST: 192.168.100.93
   PORT: 22
   USERNAME: root
-  PASSWORD: Arcserve01
+  PASSWORD: xxxxxx
 
 BUCKET_AWS_S3:
-  S3_NAME: 'pedidoswebtecnofin'
-  ACCESS_KEY: 'AKIAWBPO32KL2CUR4DVT'
-  SECRET_KEY: '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'
-  PATH_BACKUP_PEDIDOS: '/pedidosBackup/'
+  S3_NAME: 'name_of_bucket'
+  ACCESS_KEY: 'access_key_from_aws_console'
+  SECRET_KEY: 'secret_key_from_aws_console'
+  # PATH_BACKUP_PEDIDOS: '/pedidosBackup/'
 
 PARSER_PARAMETERS:
   APPLY_SENT_INTEGRATION: True # Maybe do not use this parameter
