@@ -2,7 +2,7 @@
 
 # Server SSH Access
 TECNOFIN_ACCESS_B2C:
-  HOST: tecnofin6.peopleshostvps.com
+  HOST: "name_of_ftp_host"
   # HOST: 66.103.159.122
   PORT: 21
   USERNAME: xxxxxx
@@ -10,7 +10,7 @@ TECNOFIN_ACCESS_B2C:
   TIME_OUT: 80
 
 TECNOFIN_ACCESS_B2B:
-  HOST: tecnofin6.peopleshostvps.com
+  HOST: "name_of_ftp_host"
   # HOST: 66.103.159.122
   PORT: 21
   USERNAME: xxxxx
@@ -18,7 +18,7 @@ TECNOFIN_ACCESS_B2B:
   TIME_OUT: 80
 
 WEBAPPS_ACCESS:
-  HOST: 192.168.100.93
+  HOST: "ip_of_server"
   PORT: 22
   USERNAME: root
   PASSWORD: xxxxxx
