@@ -3,7 +3,6 @@
 # Server SSH Access
 TECNOFIN_ACCESS_B2C:
   HOST: "name_of_ftp_host"
-  # HOST: 66.103.159.122
   PORT: 21
   USERNAME: xxxxxx
   PASSWORD: xxxxxx
@@ -11,7 +10,6 @@ TECNOFIN_ACCESS_B2C:
 
 TECNOFIN_ACCESS_B2B:
   HOST: "name_of_ftp_host"
-  # HOST: 66.103.159.122
   PORT: 21
   USERNAME: xxxxx
   PASSWORD: xxxxx
@@ -27,7 +25,6 @@ BUCKET_AWS_S3:
   S3_NAME: 'name_of_bucket'
   ACCESS_KEY: 'access_key_from_aws_console'
   SECRET_KEY: 'secret_key_from_aws_console'
-  # PATH_BACKUP_PEDIDOS: '/pedidosBackup/'
 
 PARSER_PARAMETERS:
   APPLY_SENT_INTEGRATION: True # Maybe do not use this parameter
@@ -37,12 +34,11 @@ LOG_RESOURCE:
   WS_FILE_LOG_NAME: 'uploader_ws_'
   DB_FILE_LOG_NAME: 'uploader_db_'
   APP_FILE_LOG_NAME: 'app_uploader_'
-  DIRECTORY_LOG_FILES: '../TVOrderS3Uploader/logs/'
+  DIRECTORY_LOG_FILES: '../OrderS3Uploader/logs/'
 
-PATH_ORDERS_B2C: '/Pedidos' # Webapps01 '/ofix/tecnofin/pedidos/'
-PATH_ORDERS_B2C_BACK: '/Pedidos/BackupPedidos'# Webapps01'/ofix/tecnofin/pedidosBk/'
-PATH_LOCAL: '../TVOrderS3Uploader'
+PATH_ORDERS_B2C: '/Orders'
+PATH_ORDERS_B2C_BACK: '/Orders/Backup'
+PATH_LOCAL: '../OrderS3Uploader'
 EXT_ORDERS_TV: '*.xml'
 
-PATH_ORDERS_B2B: '/Pedidos' # Webapps01 '/ofix/tecnofin/pedidosb2b/'
-# PATH_ORDERS_B2B_BACK: '/ofix/tecnofin/pedidosb2bBk/'
+PATH_ORDERS_B2B: '/Orders' 
