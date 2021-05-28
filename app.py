@@ -3,15 +3,14 @@
 Requires Python 3.0 or later
 """
 
-__author__ = "Jorge Morfinez Mojica (jorgemorfinez@ofix.mx)"
+__author__ = "Jorge Morfinez Mojica (jorge.morfinez.m@gmail.com)"
 __copyright__ = "Copyright 2019, Jorge Morfinez Mojica"
-__license__ = "Ofix S.A. de C.V."
+__license__ = ""
 __history__ = """ """
 __version__ = "1.20.D10.1.2.1 ($Rev: 10 $)"
 
 
 from constants.constants import Constants as Const
-# import paramiko
 import fnmatch
 import boto3
 from ftplib import FTP_TLS
@@ -22,16 +21,16 @@ import time
 logger = configure_logger()
 
 
-# Conecta al FTP B2B de Tecnofin
+# Conecta al FTP B2B
 def ftp_orders_b2b_tecnofin_connector():
 
     cfg = get_config_constant_file()
 
-    remote_host = cfg['TECNOFIN_ACCESS_B2B']['HOST']
-    remote_port = cfg['TECNOFIN_ACCESS_B2B']['PORT']
-    remote_username = cfg['TECNOFIN_ACCESS_B2B']['USERNAME']
-    remote_password = cfg['TECNOFIN_ACCESS_B2B']['PASSWORD']
-    remote_timeout = cfg['TECNOFIN_ACCESS_B2B']['TIME_OUT']
+    remote_host = cfg['ACCESS_B2B']['HOST']
+    remote_port = cfg['ACCESS_B2B']['PORT']
+    remote_username = cfg['ACCESS_B2B']['USERNAME']
+    remote_password = cfg['ACCESS_B2B']['PASSWORD']
+    remote_timeout = cfg['ACCESS_B2B']['TIME_OUT']
 
     ftps = FTP_TLS(remote_host)
 
@@ -53,11 +52,11 @@ def ftp_orders_b2c_tecnofin_connector():
 
     cfg = get_config_constant_file()
 
-    remote_host = cfg['TECNOFIN_ACCESS_B2C']['HOST']
-    remote_port = cfg['TECNOFIN_ACCESS_B2C']['PORT']
-    remote_username = cfg['TECNOFIN_ACCESS_B2C']['USERNAME']
-    remote_password = cfg['TECNOFIN_ACCESS_B2C']['PASSWORD']
-    remote_timeout = cfg['TECNOFIN_ACCESS_B2C']['TIME_OUT']
+    remote_host = cfg['ACCESS_B2C']['HOST']
+    remote_port = cfg['ACCESS_B2C']['PORT']
+    remote_username = cfg['ACCESS_B2C']['USERNAME']
+    remote_password = cfg['ACCESS_B2C']['PASSWORD']
+    remote_timeout = cfg['ACCESS_B2C']['TIME_OUT']
 
     ftps = FTP_TLS(remote_host)
 
@@ -83,8 +82,6 @@ def parse_xml_pedidos_b2c_tv(order_type):
     cfg = get_config_constant_file()
 
     orders_status_list = cfg['ORDERS_STATUS_LIST']
-
-    # remote_backup_path = '/ofix/tecnofin/pedidosBk/'
 
     if 'B2C' in order_type:
 
@@ -215,7 +212,6 @@ def copy_order_to_aws_s3(pedido):
     logger.info('Order Pedido file to upload: %s', pedido)
 
     s3 = boto3.resource('s3', aws_access_key_id=s3_access_key, aws_secret_access_key=s3_secret_key)
-    # s3.Bucket(bucketname).upload_file(filename, '/home/ubuntu/environment/ordersS3Uploader/Order-12630.xml')
     s3.Object(bucketname, pedido).upload_file(Filename=pedido)
 
     logger.info('Order Pedido file uploaded: %s', pedido)
@@ -234,7 +230,6 @@ def connect_aws_s3():
     bucketname = bucket_s3_name
 
     s3 = boto3.resource('s3', aws_access_key_id=s3_access_key, aws_secret_access_key=s3_secret_key)
-    # s3.Bucket(bucketname).upload_file(filename, '/home/ubuntu/environment/ordersS3Uploader/Order-12630.xml')
 
     bucket_pedidos = s3.Bucket(bucketname)
 
@@ -276,8 +271,8 @@ def get_config_constant_file():
     _constants_file = "constants/constants.yml"
 
     # PROD
-    # _constants_file = '/home/jorge/Documents/Projects/tecnofinLayouts/projects/PaginaB2COFIXNORMAL/' \
-    #                  'ordersTVParser/constants/constants.yml'
+    # _constants_file = "constants/constants.yml"
+    
     cfg = Const.get_constants_file(_constants_file)
 
     return cfg
@@ -298,57 +293,9 @@ def main():
     logger.info('ORDER_TYPE ARG: %s', str(order_type))
 
     parse_xml_pedidos_b2c_tv(order_type)
-    # ftp_orders_tecnofin_connector()
 
 
 if __name__ == "__main__":
     pass
 
     main()
-
-
-'''
-# NO USE IT - Connect to SFTP not FTP over TLS
-# noinspection PyGlobalUndefined
-def connect_to_ftp_pedidos():
-
-    ssh = None
-
-    cfg = get_config_constant_file()
-
-    remote_host = cfg['WEBAPPS_ACCESS']['HOST']
-    remote_port = cfg['WEBAPPS_ACCESS']['PORT']
-    remote_username = cfg['WEBAPPS_ACCESS']['USERNAME']
-    remote_password = cfg['WEBAPPS_ACCESS']['PASSWORD']
-
-    ssh = paramiko.SSHClient()
-
-    ssh.load_system_host_keys()
-    ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-
-    try:
-
-        ssh.connect(hostname=remote_host,
-                    port=remote_port,
-                    username=remote_username,
-                    password=remote_password,
-                    timeout=300,
-                    banner_timeout=300,
-                    allow_agent=False,
-                    look_for_keys=False)
-
-        chan = ssh.invoke_shell()
-        resp = chan.recv(9999)
-        print(resp)
-
-    except paramiko.ssh_exception.SSHException as sshe:
-        # socket is open, but not SSH service responded
-        # if e.message == 'Error reading SSH protocol banner':
-
-        print('SSH transport is available! ', sshe)
-
-    except paramiko.ssh_exception.NoValidConnectionsError as nvce:
-        print('SSH transport is not ready... ', nvce)
-
-    return ssh
-'''
