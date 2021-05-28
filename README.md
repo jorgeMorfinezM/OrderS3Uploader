@@ -1,2 +1,2 @@
 # TVOrderS3Uploader
-Descarga XMLs de pedidos de FTP de Tecnofin y los deposita en Bucket de S3 con validación por nombre del XML
+Descarga XMLs de orders de un servidor FTP y los deposita en un Bucket de S3 con validación por nombre del XML
