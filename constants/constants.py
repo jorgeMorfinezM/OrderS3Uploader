@@ -3,9 +3,9 @@
 Requires Python 3.0 or later
 """
 
-__author__ = "Jorge Morfinez Mojica (jorgemorfinez@ofix.mx)"
+__author__ = "Jorge Morfinez Mojica (jorge.morfinez.m@gmail.com)"
 __copyright__ = "Copyright 2020, Jorge Morfinez Mojica"
-__license__ = "Ofix S.A. de C.V."
+__license__ = ""
 __history__ = """ """
 __version__ = "1.20.D10.1.2.3 ($Rev: 11 $)"
 
