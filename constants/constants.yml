@@ -1,21 +1,21 @@
 # Constant config version: "1.20.D10.1.2.10 ($Rev: 15 $)"
 
 # Server SSH Access
-TECNOFIN_ACCESS_B2C:
+ACCESS_B2C:
   HOST: "name_of_ftp_host"
   PORT: 21
   USERNAME: xxxxxx
   PASSWORD: xxxxxx
   TIME_OUT: 80
 
-TECNOFIN_ACCESS_B2B:
+ACCESS_B2B:
   HOST: "name_of_ftp_host"
   PORT: 21
   USERNAME: xxxxx
   PASSWORD: xxxxx
   TIME_OUT: 80
 
-WEBAPPS_ACCESS:
+WE_SERVER_ACCESS:
   HOST: "ip_of_server"
   PORT: 22
   USERNAME: root
@@ -27,7 +27,7 @@ BUCKET_AWS_S3:
   SECRET_KEY: 'secret_key_from_aws_console'
 
 PARSER_PARAMETERS:
-  APPLY_SENT_INTEGRATION: True # Maybe do not use this parameter
+  APPLY_SENT: True # Maybe do not use this parameter
 
 LOG_RESOURCE:
   FILE_EXTENSION: '.log'
